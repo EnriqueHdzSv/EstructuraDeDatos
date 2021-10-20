@@ -1,0 +1,66 @@
+package fes_aragon_unam_adts;
+
+public class DoubleLinkedList {
+
+    private class NodoDoble<T> {
+
+        T data;
+        NodoDoble next;
+        NodoDoble prev;
+
+        public NodoDoble() {
+        }
+
+        public NodoDoble(T data, NodoDoble next, NodoDoble prev) {
+            this.data = data;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+    
+    private NodoDoble head;
+    private NodoDoble tail;
+    private int size;
+
+    public DoubleLinkedList() {
+        head = null;
+        tail = null;
+        this.size = 0;
+    }
+
+    public boolean siEmpty() {
+        return this.head == null;
+    }
+    
+    public void append(Object valor) {
+        if (this.tail == null) {
+            this.tail = new NodoDoble(valor, null, null);
+            this.head = this.tail;
+        } else {
+            this.tail.next = new NodoDoble(valor, null, this.tail);
+            this.tail = this.tail.next;
+        }
+        this.size++;
+    }
+
+    public void transversal() {
+        NodoDoble currNode = this.head;
+        while (currNode != null) {
+            System.out.print(currNode.data + " -->");
+            currNode = currNode.next;
+        }
+        System.out.println("");
+    }
+
+    public int getSize() {
+        return size;
+    }
+/**
+    public NodoDoble removeFromHead(Object valor){
+        NodoDoble currNode = this.head;
+        while (currNode.data != valor || currNode != null) {
+
+        }
+    }
+
+*/}
